@@ -1,0 +1,1 @@
+This folder contains a Terraform script to create Datadog monitors for AWS EC2 instance CPU usage and memory alerts.
