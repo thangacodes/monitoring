@@ -33,4 +33,4 @@ echo "[datadog-ansible README](https://github.com/thangacodes/monitoring/blob/ma
 
 Link to refer to Datadog Terraform:
 
-echo "[datadog-terraform](https://github.com/thangacodes/monitoring/tree/main/datadog/datadog-terraform/README.md)"
+echo "[datadog-terraform README](https://github.com/thangacodes/monitoring/tree/main/datadog/datadog-terraform/README.md)"
