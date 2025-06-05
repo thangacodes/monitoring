@@ -29,8 +29,8 @@ Folder structure for the role called "ddog"
 
 Link to refer to Datadog Ansible:
 
-echo "- [datadog-ansible README](https://github.com/thangacodes/monitoring/blob/main/datadog/datadog-ansible/README.md)"
+- [datadog-ansible README](https://github.com/thangacodes/monitoring/blob/main/datadog/datadog-ansible/README.md)
 
 Link to refer to Datadog Terraform:
 
-echo "- [datadog-terraform README](https://github.com/thangacodes/monitoring/blob/main/datadog/datadog-terraform/README.md)"
+- [datadog-terraform README](https://github.com/thangacodes/monitoring/blob/main/datadog/datadog-terraform/README.md)
