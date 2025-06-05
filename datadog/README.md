@@ -8,7 +8,7 @@ Folder structure for the role called "ddog"
 
 📁 ddog
 
-![image](https://github.com/user-attachments/assets/6c0c7984-9959-4b43-a26c-49e3c5074f3c)
+<img src="https://github.com/user-attachments/assets/6c0c7984-9959-4b43-a26c-49e3c5074f3c" width="200" height="200" />
 
 Link to refer to Datadog Ansible:
 
