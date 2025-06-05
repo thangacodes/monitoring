@@ -6,10 +6,10 @@ Monitoring:
 
 2) Datadog is a commercial product for infrastructure monitoring and application performance management (APM).
 
-I have included this here for installing the Datadog agent on remote machines, specifically AWS EC2 instances
-  using Ansible automation.
+3) I have included this here for installing the Datadog agent on remote machines, specifically AWS EC2 instances
+   using Ansible automation.
 
-[datadog-installation](https://github.com/thangacodes/monitoring/tree/ddog/datadog)
+   [datadog-installation](https://github.com/thangacodes/monitoring/tree/ddog/datadog)
 
 
 
