@@ -1,7 +1,8 @@
+```bash 
+
 This automation installs Datadog agent on remote AWS EC2 instances using an Ansible playbook.
 
 Folder structure for the role called "ddog"
-
 
 📁 datadog-terraform
 📁 datadog-ansible
@@ -28,8 +29,8 @@ Folder structure for the role called "ddog"
 
 Link to refer to Datadog Ansible:
 
-[datadog-ansible](https://github.com/thangacodes/monitoring/tree/main/datadog/datadog-ansible)
+echo "[datadog-ansible README](https://github.com/thangacodes/monitoring/blob/main/datadog/datadog-ansible/README.md)"
 
 Link to refer to Datadog Terraform:
 
-[datadog-terraform](https://github.com/thangacodes/monitoring/tree/main/datadog/datadog-terraform)
+echo "[datadog-terraform](https://github.com/thangacodes/monitoring/tree/main/datadog/datadog-terraform/README.md)"
