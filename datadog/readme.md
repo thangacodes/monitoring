@@ -4,6 +4,7 @@ This automation installs Datadog agent on remote AWS EC2 instances using an Ansi
 
 Folder structure for the role called "ddog"
 
+📁 datadog-ansible
 📁 ddog
 .
 ├── defaults
