@@ -1,0 +1,6 @@
+plugin: amazon.aws.aws_ec2
+regions:
+  - ap-south-1
+profile: vault
+keyed_groups:
+  - key: tags.Name

@@ -1,0 +1,8 @@
+## /etc/datadog-agent/datadog.yaml -file location
+
+api_key: "{{ datadog_api_key }}"
+tags:
+  - env:development
+logs_enabled: true
+apm_config:
+  enabled: true
