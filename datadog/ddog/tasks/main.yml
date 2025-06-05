@@ -1,0 +1,21 @@
+# tasks file for ddog
+---
+- name: Install Datadog Agent
+  shell: |
+    DD_API_KEY={{ datadog_api_key }} DD_SITE={{ dd_site }} bash -c "$(curl -L {{ script_url }})"
+  args:
+    creates: /etc/datadog-agent
+- name: Template the datadog.yaml config file
+  template:
+    src: datadog.yaml.j2
+    dest: /etc/datadog-agent/datadog.yaml
+    owner: dd-agent
+    group: dd-agent
+    mode: '0644'
+  notify: Restart datadog-agent
+- name: Ensure datadog-agent is running
+  service:
+    name: datadog-agent
+    state: started
+    enabled: yes
+

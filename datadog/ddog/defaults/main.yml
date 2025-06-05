@@ -1,0 +1,6 @@
+# defaults file for ddog
+---
+datadog_api_key: "abcdefghijklmnopqrstuvwxy"
+dd_site: "ap1.datadoghq.com"
+script_url: "https://install.datadoghq.com/scripts/install_script_agent7.sh"
+
