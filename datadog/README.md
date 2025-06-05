@@ -7,26 +7,8 @@ Folder structure for the role called "ddog"
 📁 datadog-ansible
 
 📁 ddog
-.
-├── defaults
-│   └── main.yml
-├── files
-├── handlers
-│   └── main.yml
-├── meta
-│   └── main.yml
-├── README.md
-├── tasks
-│   └── main.yml
-├── templates
-│   └── datadog.yaml.j2
-├── tests
-│   ├── inventory
-│   └── test.yml
-└── vars
-    └── main.yml
-    
-9 directories, 9 files
+
+![image](https://github.com/user-attachments/assets/6c0c7984-9959-4b43-a26c-49e3c5074f3c)
 
 Link to refer to Datadog Ansible:
 
