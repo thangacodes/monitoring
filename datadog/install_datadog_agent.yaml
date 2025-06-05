@@ -1,6 +1,6 @@
 ---
-- name: Install Datadog Agent on EC2
-  hosts: ec2
+- name: Install Datadog Agent on EC2 machine
+  hosts: localhost
   become: yes
   roles:
-    - datadog
+    - ddog
