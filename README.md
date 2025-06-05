@@ -14,4 +14,8 @@ Monitoring:
 4) I have created a Terraform script to provision and test datadog-agent on an EC2 instance in AWS.
 
    [ec2-terraform](https://github.com/thangacodes/monitoring/tree/main/ec2_provision)
+
+5) I have updated Terraform script to create monitor for AWS EC2
+
+   [datadog-monitor-create](https://github.com/thangacodes/monitoring/tree/main/datadog/datadog-terraform/cpu-alert-create)
    
