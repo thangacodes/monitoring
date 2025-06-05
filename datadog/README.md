@@ -1,11 +1,11 @@
-```bash 
-
 This automation installs Datadog agent on remote AWS EC2 instances using an Ansible playbook.
 
 Folder structure for the role called "ddog"
 
 📁 datadog-terraform
+
 📁 datadog-ansible
+
 📁 ddog
 .
 ├── defaults
@@ -25,6 +25,7 @@ Folder structure for the role called "ddog"
 │   └── test.yml
 └── vars
     └── main.yml
+    
 9 directories, 9 files
 
 Link to refer to Datadog Ansible:
