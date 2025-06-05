@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Ping all EC2 instances",
+        "hosts": "ec2",
+        "gather_facts": "no",
+        "tasks": [
+            {
+                "name": "Ping the server",
+                "ping": null,
+                "register": "ping_out"
+            },
+            {
+                "debug": "msg=\"{{ ping_out }}\""
+            }
+        ]
+    }
+]
