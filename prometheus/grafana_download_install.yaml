@@ -1,0 +1,28 @@
+---
+- name: Install packages and Grafana on localhost
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Install required packages
+      apt:
+        name:
+          - adduser
+          - libfontconfig1
+          - musl
+        state: present
+        update_cache: yes
+    - name: Download Grafana Enterprise deb package
+      get_url:
+        url: https://dl.grafana.com/enterprise/release/grafana-enterprise_12.0.1_amd64.deb
+        dest: /home/ubuntu/grafana-enterprise_12.0.1_amd64.deb
+        mode: '0644'
+        owner: ubuntu
+        group: ubuntu
+    - name: Install Grafana Enterprise deb package
+      apt:
+        deb: /home/ubuntu/grafana-enterprise_12.0.1_amd64.deb
+    - name: Start and enable Grafana service
+      systemd:
+        name: grafana-server
+        state: started
+        enabled: yes
