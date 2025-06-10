@@ -1,15 +1,18 @@
-##promotheus service
-
-
 [Unit]
-Description=Prometheus
+Description=Prometheus Monitoring
 Wants=network-online.target
 After=network-online.target
 
 [Service]
+User=prometheus
+Group=prometheus
 Type=simple
 WorkingDirectory=/opt/prometheus
-ExecStart=/opt/prometheus/prometheus
+ExecStart=/opt/prometheus/prometheus \
+  --config.file=/opt/prometheus/prometheus.yml \
+  --storage.tsdb.path=/opt/prometheus/data
+Restart=always
+RestartSec=10s
 
 [Install]
 WantedBy=multi-user.target
