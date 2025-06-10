@@ -9,3 +9,8 @@ Prometheus: 9090 (default port for Prometheus server HTTP)
 Node Exporter: 9100 (default port for node_exporter metrics endpoint)
 
 Blackbox Exporter: 9115 (default port for blackbox_exporter metrics endpoint)
+
+
+How to make use of ansible playbook to configure prometheus?
+
+ansible-playbook 
