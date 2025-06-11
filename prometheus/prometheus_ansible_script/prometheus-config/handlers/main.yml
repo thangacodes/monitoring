@@ -1,0 +1,6 @@
+# handlers file for prometheus-config
+---
+- name: restart prometheus
+  systemd:
+    name: prometheus
+    state: restarted

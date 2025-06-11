@@ -1,0 +1,8 @@
+# defaults file for prometheus-config
+---
+prometheus_version: "3.4.1"
+prometheus_user: prometheus
+prometheus_group: prometheus
+install_dir: /opt/prometheus
+download_url: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-amd64.tar.gz"
+
