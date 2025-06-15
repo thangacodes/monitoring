@@ -18,4 +18,10 @@ Alertmanager is a service that,
 
 ansible-playbook am-install.yaml --check
 
+# To make an alias permanent:
+echo 'alias ap="ansible-playbook"' >> ~/.bashrc
+Then reload the file:
+source ~/.bashrc
+
+
   
