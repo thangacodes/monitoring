@@ -3,11 +3,14 @@
   hosts: localhost
   become: yes
   vars:
-    alertmanager_version: "0.28.1"
-    alertmanager_user: alertmanager
-    alertmanager_group: alertmanager
-    install_dir: /opt/alertmanager
-    download_url: "https://github.com/prometheus/alertmanager/releases/download/v{{ alertmanager_version }}/alertmanager-{{ alertmanager_version }}.linux-amd64.tar.gz"
+  alertmanager_version: "0.28.1"
+  alertmanager_user: alertmanager
+  alertmanager_group: alertmanager
+  alertmanager_webui: 9093             
+  alertmanager_cluster_comm: 9094         
+  install_dir: /opt/alertmanager
+  download_url: "https://github.com/prometheus/alertmanager/releases/download/v{{ alertmanager_version }}/alertmanager-{{ alertmanager_version }}.linux-amd64.tar.gz"
+  
   tasks:
     - name: Ensure alertmanager user exists
       user:
@@ -72,8 +75,8 @@
           ExecStart={{ install_dir }}/alertmanager \
             --config.file={{ install_dir }}/alertmanager.yml \
             --storage.path={{ install_dir }}/data \
-            --web.listen-address=":9093"
-            --cluster.listen-address=":9194"
+            --web.listen-address=":{{ alertmanager_webui }}" \
+            --cluster.listen-address=":{{ alertmanager_cluster_comm }}"
           Restart=on-failure
           [Install]
           WantedBy=multi-user.target
