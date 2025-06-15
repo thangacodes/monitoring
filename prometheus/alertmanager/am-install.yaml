@@ -72,7 +72,8 @@
           ExecStart={{ install_dir }}/alertmanager \
             --config.file={{ install_dir }}/alertmanager.yml \
             --storage.path={{ install_dir }}/data \
-            --cluster.listen-address=:9094
+            --web.listen-address=":9093"
+            --cluster.listen-address=":9194"
           Restart=on-failure
           [Install]
           WantedBy=multi-user.target
