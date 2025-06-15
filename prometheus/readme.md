@@ -1,6 +1,8 @@
 ```bash
 
-Here are the default ports for each services like Grafana, Prometheus, Node Exporter, Blackbox Exporter
+Here are the default ports for each services like AlertManager, Grafana, Prometheus, Node Exporter, Blackbox Exporter
+
+AlertManager: 9093 & 9094 (Web UI & Cluster Communication)
 
 Grafana: 3000 (default HTTP port for the Grafana web UI)
 
