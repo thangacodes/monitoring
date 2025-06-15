@@ -1,6 +1,42 @@
 ```bash
 
 📁 Folder Structure
+.
+├── alertmanager
+│   ├── am-install.yaml
+│   └── readme.md
+├── blackbox_exporter
+│   └── blackbox_exporter_install.sh
+├── grafana_dash
+│   ├── grafana_download_install.yaml
+│   └── grafana_install.sh
+├── node_exporter
+│   └── node-exporter-install.sh
+├── prometheus_ansible_script
+│   ├── install_config_prometheus.yaml
+│   ├── invoke_prometheus_config_role.yaml
+│   ├── prometheus-config
+│   │   ├── defaults
+│   │   │   └── main.yml
+│   │   ├── handlers
+│   │   │   └── main.yml
+│   │   ├── meta
+│   │   │   └── main.yml
+│   │   ├── tasks
+│   │   │   └── main.yml
+│   │   ├── templates
+│   │   │   └── prometheus.service.j2
+│   │   ├── tests
+│   │   │   ├── inventory
+│   │   │   └── test.yml
+│   │   └── vars
+│   │       └── main.yml
+│   ├── prometheus-install.sh
+│   ├── prometheus.service
+│   └── readme.md
+└── readme.md
+
+13 directories, 20 files
 
 
 Here are the default ports for each services like AlertManager, Grafana, Prometheus, Node Exporter, Blackbox Exporter
