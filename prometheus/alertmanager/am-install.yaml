@@ -1,0 +1,87 @@
+---
+- name: Install and configure AlertManager on RedHat Linux Server
+  hosts: localhost
+  become: yes
+  vars:
+    alertmanager_version: "0.28.1"
+    alertmanager_user: alertmanager
+    alertmanager_group: alertmanager
+    install_dir: /opt/alertmanager
+    download_url: "https://github.com/prometheus/alertmanager/releases/download/v{{ alertmanager_version }}/alertmanager-{{ alertmanager_version }}.linux-amd64.tar.gz"
+  tasks:
+    - name: Ensure alertmanager user exists
+      user:
+        name: "{{ alertmanager_user }}"
+        shell: /bin/false
+        system: yes
+        create_home: no
+
+    - name: Download alertmanager tarball
+      get_url:
+        url: "{{ download_url }}"
+        dest: /tmp/alertmanager.tar.gz
+
+    - name: Extract alertmanager archive
+      unarchive:
+        src: /tmp/alertmanager.tar.gz
+        dest: /tmp/
+        remote_src: yes
+
+    - name: Create installation directory
+      file:
+        path: "{{ install_dir }}"
+        state: directory
+        owner: "{{ alertmanager_user }}"
+        group: "{{ alertmanager_group }}"
+
+    - name: Copy alertmanager binaries
+      copy:
+        src: "/tmp/alertmanager-{{ alertmanager_version }}.linux-amd64/alertmanager"
+        dest: "{{ install_dir }}/alertmanager"
+        mode: '0755'
+        owner: "{{ alertmanager_user }}"
+        group: "{{ alertmanager_group }}"
+
+    - name: Copy alertmanager config
+      copy:
+        src: "/tmp/alertmanager-{{ alertmanager_version }}.linux-amd64/alertmanager.yml"
+        dest: "{{ install_dir }}/alertmanager.yml"
+        owner: "{{ alertmanager_user }}"
+        group: "{{ alertmanager_group }}"
+
+    - name: Create data directory
+      file:
+        path: "{{ install_dir }}/data"
+        state: directory
+        owner: "{{ alertmanager_user }}"
+        group: "{{ alertmanager_group }}"
+
+    - name: Create systemd service file for alertmanager
+      copy:
+        dest: /etc/systemd/system/alertmanager.service
+        content: |
+          [Unit]
+          Description=Alertmanager Monitoring
+          Wants=network-online.target
+          After=network-online.target
+
+          [Service]
+          User={{ alertmanager_user }}
+          Group={{ alertmanager_group }}
+          Type=simple
+          ExecStart={{ install_dir }}/alertmanager \
+            --config.file={{ install_dir }}/alertmanager.yml \
+            --storage.path={{ install_dir }}/data \
+            --cluster.listen-address=:9094
+          Restart=on-failure
+          [Install]
+          WantedBy=multi-user.target
+    
+    - name: Reload systemd
+      systemd:
+        daemon_reload: yes
+    - name: Enable and start Alertmanager
+      systemd:
+        name: alertmanager
+        enabled: yes
+        state: started
