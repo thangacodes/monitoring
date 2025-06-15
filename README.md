@@ -10,18 +10,22 @@
 
    [ansible-for-prometheus](https://github.com/thangacodes/monitoring/tree/main/prometheus/prometheus_ansible_script)
 
-3) Datadog is a commercial product for infrastructure monitoring and application performance management (APM).
+3) AlertManager ansible scripts
 
-4) I have included this here for installing the Datadog agent on remote machines, specifically AWS EC2 instances
+   [alertmanager](https://github.com/thangacodes/monitoring/tree/main/prometheus/alertmanager)
+
+4) Datadog is a commercial product for infrastructure monitoring and application performance management (APM).
+
+5) I have included this here for installing the Datadog agent on remote machines, specifically AWS EC2 instances
    using Ansible automation.
 
    [datadog-installation](https://github.com/thangacodes/monitoring/tree/main/datadog)
 
-5) I have created a Terraform script to provision and test datadog-agent on an EC2 instance in AWS.
+6) I have created a Terraform script to provision and test datadog-agent on an EC2 instance in AWS.
 
    [ec2-terraform](https://github.com/thangacodes/monitoring/tree/main/ec2_provision)
 
-6) I have updated Terraform script to create monitor for AWS EC2
+7) I have updated Terraform script to create monitor for AWS EC2
 
    [datadog-monitor-create](https://github.com/thangacodes/monitoring/tree/main/datadog/datadog-terraform/cpu-alert-create)
    
