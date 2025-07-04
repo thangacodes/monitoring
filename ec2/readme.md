@@ -1,8 +1,8 @@
 ```bash
 
-Below is the file structure for the ec2_provision Terraform script
+Below is the file structure for the ec2 Terraform script
 
-📁 ec2_provision
+📁 ec2
 .
 ├── main.tf
 ├── outputs.tf
