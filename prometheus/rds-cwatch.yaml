@@ -1,0 +1,6 @@
+---
+- name: "Role to install and configure CloudWatch-exporter on a ec2-machine"
+  hosts: localhost
+  become: yes
+  roles:
+    - cwatch-exporter
