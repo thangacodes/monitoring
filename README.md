@@ -27,7 +27,7 @@
 
 7) I have created a Terraform script to provision and test datadog-agent on an EC2 instance in AWS.
 
-   [ec2-terraform](https://github.com/thangacodes/monitoring/tree/main/ec2_provision)
+   [tfscript-for-ec2](https://github.com/thangacodes/monitoring/tree/main/ec2)
 
 8) I have updated Terraform script to create monitor for AWS EC2
 
