@@ -7,6 +7,29 @@
 │   └── readme.md
 ├── blackbox_exporter
 │   └── blackbox_exporter_install.sh
+├── cloudwatch_exporter_rds
+│   ├── cloudwatch-exporter.service
+│   └── cloudwatch_exporter.yaml
+├── cwatch-exporter
+│   ├── README.md
+│   ├── defaults
+│   │   └── main.yml
+│   ├── files
+│   │   ├── cloudwatch_exporter-0.16.0-jar-with-dependencies.jar
+│   │   └── cloudwatch_exporter.yml
+│   ├── handlers
+│   │   └── main.yml
+│   ├── meta
+│   │   └── main.yml
+│   ├── tasks
+│   │   └── main.yml
+│   ├── templates
+│   │   └── cloudwatch-exporter.service.j2
+│   ├── tests
+│   │   ├── inventory
+│   │   └── test.yml
+│   └── vars
+│       └── main.yml
 ├── grafana_dash
 │   ├── grafana_download_install.yaml
 │   └── grafana_install.sh
@@ -34,14 +57,16 @@
 │   ├── prometheus-install.sh
 │   ├── prometheus.service
 │   └── readme.md
+├── rds-cwatch.yaml
 └── readme.md
 
-13 directories, 20 files
+24 directories, 34 files
 
-
-Here are the default ports for each services like AlertManager, Grafana, Prometheus, Node Exporter, Blackbox Exporter
+Here are the default ports for each services like AlertManager, Blackbox Exporter,CloudWatch-exporter, Grafana, Prometheus, Node Exporter,
 
 AlertManager: 9093 & 9094 (Web UI & Cluster Communication)
+
+CloudWatch exporter: 9106
 
 Grafana: 3000 (default HTTP port for the Grafana web UI)
 
