@@ -1,0 +1,16 @@
+[Unit]
+Description=CloudWatch Exporter
+After=network.target
+
+[Service]
+User=ec2-user
+Group=ec2-user
+WorkingDirectory=/home/ec2-user
+ExecStart=/usr/bin/java -jar /home/ec2-user/cloudwatch_exporter-0.16.0-jar-with-dependencies.jar 9106 cloudwatch_exporter.yml
+SuccessExitStatus=143
+Restart=on-failure
+StandardOutput=append:/var/log/cloudwatch_exporter.log
+StandardError=append:/var/log/cloudwatch_exporter.err
+
+[Install]
+WantedBy=multi-user.target
