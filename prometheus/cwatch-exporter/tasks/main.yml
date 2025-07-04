@@ -1,0 +1,39 @@
+- name: Create directory for cloudwatch_exporter
+  file:
+    path: "{{ cloudwatch_exporter_dir }}"
+    state: directory
+    owner: "{{ run_as_user }}"
+    group: "{{ run_as_user }}"
+
+- name: Copy cloudwatch_exporter jar
+  copy:
+    src: "{{ cloudwatch_exporter_jar }}"
+    dest: "{{ cloudwatch_exporter_dir }}/{{ cloudwatch_exporter_jar }}"
+    owner: "{{ run_as_user }}"
+    group: "{{ run_as_user }}"
+    mode: '0755'
+
+- name: Copy cloudwatch_exporter config
+  copy:
+    src: "{{ cloudwatch_exporter_config }}"
+    dest: "{{ cloudwatch_exporter_dir }}/{{ cloudwatch_exporter_config }}"
+    owner: "{{ run_as_user }}"
+    group: "{{ run_as_user }}"
+    mode: '0644'
+
+- name: Deploy systemd service file
+  template:
+    src: cloudwatch-exporter.service.j2
+    dest: /etc/systemd/system/cloudwatch-exporter.service
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - Reload systemd
+    - Restart cloudwatch_exporter
+
+- name: Enable and start cloudwatch_exporter service
+  systemd:
+    name: cloudwatch-exporter
+    enabled: yes
+    state: started

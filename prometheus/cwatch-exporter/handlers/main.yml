@@ -1,0 +1,11 @@
+---
+# handlers file for cwatch-exporter
+- name: Reload systemd
+  command: systemctl daemon-reload
+  become: yes
+
+- name: Restart cloudwatch_exporter
+  systemd:
+    name: cloudwatch-exporter
+    state: restarted
+  become: yes

@@ -1,0 +1,9 @@
+---
+cloudwatch_exporter_dir: /home/ec2-user/cloudwatch_exporter_rds
+cloudwatch_exporter_jar: cloudwatch_exporter-0.16.0-jar-with-dependencies.jar
+cloudwatch_exporter_config: cloudwatch_exporter.yml
+cloudwatch_exporter_log: cloudwatch_exporter.log
+cloudwatch_exporter_port: 9206
+run_as_user: ec2-user
+java_home: /usr/lib/jvm/java-11-openjdk
+

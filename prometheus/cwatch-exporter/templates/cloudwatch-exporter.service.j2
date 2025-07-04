@@ -1,0 +1,16 @@
+[Unit]
+Description=CloudWatch Exporter
+After=network.target
+
+[Service]
+User={{ run_as_user }}
+Group={{ run_as_user }}
+WorkingDirectory={{ cloudwatch_exporter_dir }}
+ExecStart=/usr/bin/java -jar {{ cloudwatch_exporter_dir }}/{{ cloudwatch_exporter_jar }} {{ cloudwatch_exporter_port }} {{ cloudwatch_exporter_dir }}/{{ cloudwatch_exporter_config }}
+SuccessExitStatus=143
+Restart=on-failure
+StandardOutput=append:/var/log/cloudwatch_exporter.log
+StandardError=append:/var/log/cloudwatch_exporter.err
+
+[Install]
+WantedBy=multi-user.target
