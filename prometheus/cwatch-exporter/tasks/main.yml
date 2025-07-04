@@ -29,8 +29,8 @@
     group: root
     mode: '0644'
   notify:
-    - Reload systemd
-    - Restart cloudwatch_exporter
+    - reload systemd
+    - restart cloudwatch_exporter
 
 - name: Enable and start cloudwatch_exporter service
   systemd:
