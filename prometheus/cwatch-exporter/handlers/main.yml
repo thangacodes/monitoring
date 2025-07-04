@@ -4,7 +4,7 @@
   command: systemctl daemon-reload
   become: yes
 - name: restart cloudwatch_exporter
+  become: yes
   systemd:
     name: cloudwatch-exporter
     state: restarted
-  become: yes
