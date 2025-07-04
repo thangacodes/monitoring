@@ -38,21 +38,16 @@ Example Playbook:
 ----------------
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-- hosts: localhost
+# rds-cwatch.yaml
+- hosts: localhost  
   become: yes
   roles:
     - role: cwatch-exporter
-      vars:
-        cloudwatch_exporter_port: 9106
-        run_as_user: ec2-user
-        cloudwatch_exporter_dir: /home/ec2-user/cloudwatch_exporter_rds
+      # vars: // Default variables can be overridden using the vars section in the role invoke yaml(path: cwatch-exporter/defaults/main.yaml)
+      # cloudwatch_exporter_port: 9106
+      # run_as_user: ec2-user
+      # cloudwatch_exporter_dir: /home/ec2-user/cloudwatch_exporter_rds
 
-License:
--------
-BSD
+How do i run role invoke ansible playbook?
+ansible-playbook rds-cwatch.yaml
 
-Author Information:
-------------------
-Developed by [try-devops.xyz]
-Contact: admin@try-devops.xyz
-GitHub: https://github.com/thangacodes/monitoring
