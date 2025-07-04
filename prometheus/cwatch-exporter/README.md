@@ -34,8 +34,8 @@ Dependencies:
 This role does not depend on any other Ansible roles.
 Ensure Java is installed on the target host before applying this role..
 
-Example Playbook:
-----------------
+How do i run role invoke ansible playbook:
+------------------------------------------
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
 # rds-cwatch.yaml
@@ -43,11 +43,12 @@ Including an example of how to use your role (for instance, with variables passe
   become: yes
   roles:
     - role: cwatch-exporter
-      # vars: // Default variables can be overridden using the vars section in the role invoke yaml(path: cwatch-exporter/defaults/main.yaml)
+      # vars:
       # cloudwatch_exporter_port: 9106
       # run_as_user: ec2-user
       # cloudwatch_exporter_dir: /home/ec2-user/cloudwatch_exporter_rds
 
-How do i run role invoke ansible playbook?
-ansible-playbook rds-cwatch.yaml
+$ ansible-playbook rds-cwatch.yaml
+
+# Note: Default variables can be overridden using the vars section in the role invoke yaml (path: cwatch-exporter/defaults/main.yaml)
 
