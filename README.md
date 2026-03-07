@@ -33,3 +33,6 @@
 
    [datadog-monitor-create](https://github.com/thangacodes/monitoring/tree/main/datadog/datadog-terraform/cpu-alert-create)
    
+9) I have updated Monitoring Service Startup scripts with flask-app service startup
+
+   [monitoring-service-scripts](https://github.com/thangacodes/monitoring/tree/main/automation)

@@ -1,0 +1,16 @@
+[Unit]
+Description=Flask Application
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/root/flask
+Environment="PATH=/root/flask/bin"
+ExecStart=/root/flask/bin/python /root/flask/app.py
+Restart=always
+RestartSec=5
+StandardOutput=append:/var/log/flask-app.log
+StandardError=append:/var/log/flask-app.log
+
+[Install]
+WantedBy=multi-user.target
