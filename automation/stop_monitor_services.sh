@@ -7,6 +7,7 @@ services=(
   "loki"
   "prometheus"
   "node_exporter"
+  "flask-app"
 )
 
 echo "==================== Stopping Monitoring Services ===================="
