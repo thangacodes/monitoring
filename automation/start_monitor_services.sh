@@ -7,6 +7,7 @@ services=(
   "loki"
   "promtail"
   "grafana-server"
+  "flask-app"
 )
 
 echo "==================== Starting Monitoring Services ===================="
