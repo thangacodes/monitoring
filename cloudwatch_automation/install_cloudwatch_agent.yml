@@ -1,0 +1,44 @@
+---
+- hosts: localhost
+  become: true
+  connection: local
+
+  vars:
+    cwagent_deb: /tmp/amazon-cloudwatch-agent.deb
+    cwagent_config: /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
+
+  tasks:
+    - name: Download CloudWatch Agent package
+      get_url:
+        url: https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
+        dest: "{{ cwagent_deb }}"
+        mode: '0644'
+
+    - name: Install CloudWatch Agent
+      apt:
+        deb: "{{ cwagent_deb }}"
+        state: present
+
+    - name: Copy CloudWatch Agent configuration
+      copy:
+        src: amazon-cloudwatch-agent.json
+        dest: "{{ cwagent_config }}"
+        owner: root
+        group: root
+        mode: '0644'
+      notify: Restart CloudWatch Agent
+
+    - name: Enable CloudWatch Agent service
+      systemd:
+        name: amazon-cloudwatch-agent
+        enabled: true
+        state: started
+
+  handlers:
+    - name: Restart CloudWatch Agent
+      command: >
+        /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl
+        -a fetch-config
+        -m ec2
+        -c file:{{ cwagent_config }}
+        -s
