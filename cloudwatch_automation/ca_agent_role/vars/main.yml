@@ -1,2 +1,6 @@
 ---
 # vars file for CA-Agent-Role
+cloudwatch_agent:
+  service_name: amazon-cloudwatch-agent
+  config_path: /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
+  control_path: /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl
