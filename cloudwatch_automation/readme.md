@@ -17,9 +17,9 @@ The automation performs the following tasks:
 ├── inventory/
 │   └── hosts.ini
 ├── playbooks/
-│   └── install_cagent.yml
+│   └── invoke_role.yaml
 
-├── roles/cloudwatch_agent
+├── roles/ca_agent_role
     ├── README.md
     ├── defaults
     │     └── main.yml
