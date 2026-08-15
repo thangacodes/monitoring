@@ -1,4 +1,4 @@
-# CloudWatch Automation
+# CloudWatch Agent Automation with Ansible:
 
 This repository contains Ansible playbooks to automate the installation and configuration of the Amazon CloudWatch Agent on Linux EC2 instances.
 
@@ -61,12 +61,18 @@ Example metrics that can be collected:
 - Network statistics
 - Log files
 
-## Running the Playbook
+## Running a single Playbook to get install and configure CA-Agent on an EC2 machine.
 
 Execute the playbook using:
 
 ```bash
 ansible-playbook -i inventory/hosts playbooks/install_cloudwatch_agent.yml
+```
+
+## Invoking an ansible role from a ansible-playbook
+
+```bash
+ansible-playbook -i inventory/hosts invoke_role.yaml
 ```
 
 ## Verification
