@@ -1,0 +1,10 @@
+galaxy_info:
+  author: td
+  description: CloudWatch Agent Role
+  company: Example
+  license: MIT
+
+  min_ansible_version: "2.15"
+
+dependencies: []
+

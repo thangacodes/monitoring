@@ -1,0 +1,37 @@
+---
+# tasks file for CA-Agent-Role
+- name: Install CloudWatch Agent on Debian systems
+  ansible.builtin.include_tasks: debian.yaml
+  when:
+    - ansible_os_family == "Debian"
+- name: Install CloudWatch Agent on RHEL systems
+  ansible.builtin.include_tasks: rhel.yml
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_distribution != "Amazon"
+- name: Install CloudWatch Agent on Amazon Linux
+  ansible.builtin.include_tasks: amazon.yml
+  when:
+    - ansible_distribution == "Amazon"
+- name: Deploy CloudWatch Agent configuration
+  ansible.builtin.template:
+    src: amazon-cloudwatch-agent.json.j2
+    dest: /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - Restart CloudWatch Agent
+- name: Enable CloudWatch Agent
+  ansible.builtin.systemd:
+    name: amazon-cloudwatch-agent
+    enabled: true
+    state: started
+- name: Check CloudWatch Agent status
+  ansible.builtin.command:
+    cmd: /opt/aws/amazoncloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a status
+  register: cwagent_status
+  changed_when: false
+- name: Display CloudWatch Agent status
+  ansible.builtin.debug:
+    var: cwagent_status.stdout
