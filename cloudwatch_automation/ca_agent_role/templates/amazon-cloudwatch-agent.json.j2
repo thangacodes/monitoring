@@ -1,6 +1,7 @@
 {
   "agent": {
-    "metrics_collection_interval": 60
+    "metrics_collection_interval": 60,
+    "run_as_user": "root"
   },
   "metrics": {
     "namespace": "CWAgent",
@@ -8,20 +9,39 @@
       "InstanceId": "${aws:InstanceId}"
     },
     "metrics_collected": {
+      "cpu": {
+        "measurement": [
+          "cpu_usage_idle",
+          "cpu_usage_user",
+          "cpu_usage_system"
+        ],
+        "resources": ["*"],
+        "totalcpu": true
+      },
       "mem": {
         "measurement": [
-          "mem_used_percent"
+          "mem_used_percent",
+          "mem_available_percent"
         ]
       },
       "disk": {
         "measurement": [
-          "used_percent"
+          "used_percent",
+          "free",
+          "total",
+          "used"
         ],
-        "resources": [
-          "/"
+        "resources": ["*"],
+        "ignore_file_system_types": [
+          "sysfs",
+          "devtmpfs",
+          "devpts",
+          "tmpfs",
+          "proc",
+          "overlay",
+          "squashfs"
         ]
       }
     }
   }
 }
-
