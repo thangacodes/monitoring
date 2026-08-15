@@ -1,6 +1,6 @@
 ---
-- name: Test CloudWatch Agent Role
-  hosts: localhost
+- name: Install and configure CloudWatch Agent
+  hosts: cloudwatch_targets
   become: true
   roles:
     - ca_agent_role
