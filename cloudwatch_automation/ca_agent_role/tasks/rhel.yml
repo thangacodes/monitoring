@@ -1,13 +1,11 @@
 ---
 - name: Download CloudWatch Agent RPM
   ansible.builtin.get_url:
-    url: https://s3.amazonaws.com/amazoncloudwatch-agent/redhat/amd64/latest/amazon-cloudwatch-agent.rpm
-    dest: /tmp/amazon-cloudwatch-agent.rpm
+    url: "{{ cloudwatch_agent.rpm.url }}"
+    dest: "{{ cloudwatch_agent.rpm.path }}"
     mode: "0644"
 
 - name: Install CloudWatch Agent
   ansible.builtin.yum:
-    name: /tmp/amazon-cloudwatch-agent.rpm
+    name: "{{ cloudwatch_agent.rpm.path }}"
     state: present
-    
-
