@@ -1,12 +1,11 @@
 ---
-- name: Download CloudWatch Agent deb package
+- name: Download CloudWatch Agent DEB package
   ansible.builtin.get_url:
-    url: https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
-    dest: /tmp/amazon-cloudwatch-agent.deb
+    url: "{{ cloudwatch_agent.deb.url }}"
+    dest: "{{ cloudwatch_agent.deb.path }}"
     mode: "0644"
 
 - name: Install CloudWatch Agent
   ansible.builtin.apt:
-    deb: /tmp/amazon-cloudwatch-agent.deb
+    deb: "{{ cloudwatch_agent.deb.path }}"
     state: present
-
