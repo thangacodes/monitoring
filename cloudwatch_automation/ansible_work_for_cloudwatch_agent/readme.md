@@ -1,4 +1,6 @@
-# CloudWatch Agent Automation with Ansible:
+# # CloudWatch Agent Automation with Ansible:
+
+```bash
 
 This repository contains Ansible playbooks to automate the installation and configuration of the Amazon CloudWatch Agent on Linux EC2 instances.
 
@@ -103,3 +105,5 @@ After successful execution:
 - Ensure the EC2 instance has internet access or access to the required AWS endpoints.
 - Verify the IAM role includes the necessary CloudWatch permissions.
 - Update the configuration file whenever additional metrics or log files need to be monitored.
+
+```
