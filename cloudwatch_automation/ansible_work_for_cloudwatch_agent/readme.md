@@ -36,7 +36,7 @@ The automation performs the following tasks:
     ├── inventory
     │   └── test.yml
     └── vars
-    │    └── main.yml
+        └── main.yml
 
 9 directories, 8 files
 
