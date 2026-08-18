@@ -40,7 +40,6 @@ The automation performs the following tasks:
     │    └── main.yml
 
 9 directories, 8 files
-
 ```
 
 ## Prerequisites
