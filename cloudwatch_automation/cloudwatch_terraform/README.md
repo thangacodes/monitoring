@@ -98,8 +98,13 @@ Verify CloudWatch Agent metrics
 
 Check the agent status on an EC2 instance:
 
-sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
-  -m ec2 -a status
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a status
+
+Note:
+-m means mode.
+ec2 means the agent is running on an Amazon EC2 instance.
+-a means action.
+status asks the agent to display its current status.
 
 List metrics for a specific instance:
 
