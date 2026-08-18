@@ -1,4 +1,5 @@
 EC2 CloudWatch Dashboard with Terraform:
+
 This Terraform project creates an Amazon CloudWatch dashboard for EC2 instances.
 
 The dashboard displays:
