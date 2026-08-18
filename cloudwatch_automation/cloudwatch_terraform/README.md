@@ -1,7 +1,5 @@
-EC2 CloudWatch Dashboard with Terraform
-
-
-
+# EC2 CloudWatch Dashboard with Terraform
+```bash
 
 Terraform configuration for creating an Amazon CloudWatch dashboard that monitors EC2 instances and CloudWatch Agent metrics.
 
@@ -15,7 +13,7 @@ Filesystem utilization from the CWAgent namespace
 
 The dashboard uses CloudWatch search expressions, so new instances that publish the matching metrics can appear automatically.
 
-Project structure
+Project structure:
 
 .
 ├── dashboard_creation.tf          # CloudWatch dashboard and widgets
@@ -124,3 +122,5 @@ To remove the Terraform-managed dashboard:
 terraform destroy
 
 This removes the CloudWatch dashboard only. It does not terminate EC2 instances.
+
+```
