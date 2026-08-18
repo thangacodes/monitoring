@@ -1,4 +1,5 @@
-# EC2 CloudWatch Dashboard with Terraform
+## EC2 CloudWatch Dashboard with Terraform:
+
 ```bash
 
 Terraform configuration for creating an Amazon CloudWatch dashboard that monitors EC2 instances and CloudWatch Agent metrics.
