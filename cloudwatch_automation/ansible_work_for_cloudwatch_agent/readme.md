@@ -13,9 +13,8 @@ The automation performs the following tasks:
 - Starts and enables the CloudWatch Agent service.
 - Verifies that the agent is running successfully.
 
-## Project Structure
-
-```
+## Project Structure:
+.
 ├── inventory/
 │   └── hosts.ini
 ├── playbooks/
@@ -40,7 +39,6 @@ The automation performs the following tasks:
     │    └── main.yml
 
 9 directories, 8 files
-```
 
 ## Prerequisites
 
