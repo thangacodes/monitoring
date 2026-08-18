@@ -1,4 +1,4 @@
-# # CloudWatch Agent Automation with Ansible:
+## CloudWatch Agent Automation with Ansible:
 
 ```bash
 
