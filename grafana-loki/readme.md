@@ -22,46 +22,29 @@ Systemd services for automatic startup
 | `script.sh` | EC2 user-data installation script |
 
 # Prerequisites:
+## Prerequisites
 
-Terraform installed
-AWS CLI configured
-AWS account and permissions to create:
-EC2
+| Requirement | Description |
+|---|---|
+| Terraform | Installed |
+| AWS CLI | Configured |
+| AWS account | Permission to create EC2, IAM, S3, and security groups |
+| EC2 key pair | Required for SSH access |
+| VPC and subnet | Must have internet access |
+| AMI | Amazon Linux 2023 x86_64 |
 
-IAM role and instance profile
+## EC2 Security Group
 
-S3 bucket
+| Port | Purpose |
+|---:|---|
+| 22 | SSH |
+| 80 | Nginx website |
+| 3000 | Grafana |
 
-Security group
+Loki port `3100` and gRPC port `9096` should remain closed to the internet.
 
-An EC2 key pair
-
-A VPC and subnet with internet access
-
-Amazon Linux 2023 x86_64 AMI
-
-The EC2 security group should allow:
-
-Port
-
-Purpose
-
-22
-
-SSH
-
-80
-
-Nginx website
-
-3000
-
-Grafana
-
-Keep Loki port 3100 and gRPC port 9096 closed to the internet.
-
-Deploy
-
+## Deploy
+```
 From the Terraform project directory:
 terraform fmt
 terraform init
@@ -137,27 +120,23 @@ sudo systemctl status loki --no-pager
 sudo systemctl status alloy --no-pager
 sudo systemctl status grafana-server --no-pager
 
-Check logs:
-
+# Check logs:
 sudo journalctl -u loki -n 50 --no-pager
 sudo journalctl -u alloy -n 50 --no-pager
 sudo journalctl -u grafana-server -n 50 --no-pager
 sudo tail -n 50 /var/log/user-data.log
 
-Test Loki:
-
+# Test Loki:
 curl http://127.0.0.1:3100/ready
 
-Expected result:
-
+# Expected result:
 ready
 
 Test Nginx:
-
 curl http://127.0.0.1/
 curl http://127.0.0.1/build_info
 
-Re-run user data
+Re-run user data:
 
 User data normally runs only during the first EC2 boot. To recreate the instance with the latest script.sh:
 
