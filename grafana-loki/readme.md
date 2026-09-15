@@ -22,8 +22,6 @@ Systemd services for automatic startup
 | `script.sh` | EC2 user-data installation script |
 
 # Prerequisites:
-## Prerequisites
-
 | Requirement | Description |
 |---|---|
 | Terraform | Installed |
@@ -33,7 +31,7 @@ Systemd services for automatic startup
 | VPC and subnet | Must have internet access |
 | AMI | Amazon Linux 2023 x86_64 |
 
-## EC2 Security Group
+## EC2 Security Group:
 
 | Port | Purpose |
 |---:|---|
@@ -41,9 +39,11 @@ Systemd services for automatic startup
 | 80 | Nginx website |
 | 3000 | Grafana |
 
+``` 
 Loki port `3100` and gRPC port `9096` should remain closed to the internet.
+```
 
-## Deploy
+## Deploy:
 ```
 From the Terraform project directory:
 terraform fmt
@@ -51,9 +51,9 @@ terraform init
 terraform validate
 terraform plan
 terraform apply
+```
 
 Confirm the deployment when Terraform asks.
-
 # View outputs:
 terraform output
 Expected outputs include:
@@ -86,13 +86,16 @@ Grafana and Loki run on the same EC2 instance, so Grafana connects to Loki throu
 Logs collected by Alloy
 
 # Alloy sends these logs to Loki:
+```
 Nginx access log
 Nginx error log
 /var/log/*.log
 /var/log/user-data.log
 systemd journal
+```
 
-In Grafana, open Explore, select the Loki datasource, and use:
+# In Grafana, open Explore, select the Loki datasource, and use:
+```
 {job="nginx"}
 {job="nginx", log_type="access"}
 {job="nginx", log_type="error"}
@@ -127,7 +130,7 @@ ready
 ```
 curl http://127.0.0.1/
 curl http://127.0.0.1/build_info
-``
+```
 # Re-run user data:
 ```
 User data normally runs only during the first EC2 boot. To recreate the instance with the latest script.sh:
@@ -143,9 +146,11 @@ Use HTTPS and a domain name for production Grafana access.
 Protect /root/grafana-credentials.txt.
 Do not print passwords into /var/log/user-data.log.
 Use an Elastic IP if the public IP must remain stable.
-
+```
 # Destroy the infrastructure:
+```
 This removes the Terraform-managed resources:
 terraform destroy
+```
 Review the plan carefully before confirming.
 ```
