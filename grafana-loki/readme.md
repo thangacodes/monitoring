@@ -3,63 +3,28 @@
 This Terraform project creates a standalone Amazon Linux 2023 EC2 server with:
 
 Grafana dashboard
-
 Grafana Loki log storage
-
 Grafana Alloy log collector
-
 Loki logs stored in Amazon S3
-
 Nginx static website
-
 Systemd services for automatic startup
 
-Repository files:
-```
-File
+| File | Purpose |
+|---|---|
+| `ec2.tf` | Creates the EC2 instance |
+| `iamrole.tf` | Creates the IAM role, policy and instance profile |
+| `s3_bucket.tf` | Creates the S3 bucket for Loki |
+| `providers.tf` | Configures the AWS provider |
+| `variables.tf` | Defines input variables |
+| `terraform.tfvars` | Contains environment-specific values |
+| `outputs.tf` | Displays EC2 IP addresses and website URLs |
+| `script.sh` | EC2 user-data installation script |
 
-Purpose
-
-ec2.tf
-
-Creates the EC2 instance
-
-iamrole.tf
-
-Creates the IAM role, policy and instance profile
-
-s3_bucket.tf
-
-Creates the S3 bucket for Loki
-
-providers.tf
-
-Configures the AWS provider
-
-variables.tf
-
-Defines input variables
-
-terraform.tfvars
-
-Contains environment-specific values
-
-outputs.tf
-
-Displays EC2 IP addresses and website URLs
-
-script.sh
-
-EC2 user-data installation script
-```
-Prerequisites
+# Prerequisites:
 
 Terraform installed
-
 AWS CLI configured
-
 AWS account and permissions to create:
-
 EC2
 
 IAM role and instance profile
@@ -97,7 +62,6 @@ Keep Loki port 3100 and gRPC port 9096 closed to the internet.
 Deploy
 
 From the Terraform project directory:
-
 terraform fmt
 terraform init
 terraform validate
@@ -106,31 +70,23 @@ terraform apply
 
 Confirm the deployment when Terraform asks.
 
-View outputs
-
+# View outputs:
 terraform output
-
 Expected outputs include:
-
 instance_public_ip
 instance_private_ip
 Static_Web
 StaticWeb_buildinfo
-
 Access the services
-
 Replace <EC2_PUBLIC_IP> with the IP shown by Terraform.
 
-Nginx website:
-
+# Nginx website:
 http://<EC2_PUBLIC_IP>/
 
-Build information:
-
+# Build information:
 http://<EC2_PUBLIC_IP>/build_info
 
-Grafana:
-
+# Grafana:
 http://<EC2_PUBLIC_IP>:3000
 
 The Grafana username and generated password are saved on the EC2 instance:
