@@ -74,15 +74,13 @@ http://<EC2_PUBLIC_IP>/build_info
 http://<EC2_PUBLIC_IP>:3000
 
 The Grafana username and generated password are saved on the EC2 instance:
-
-sudo cat /root/grafana-credentials.txt
+```sudo cat /root/grafana-credentials.txt```
 
 Grafana and Loki
 The Loki datasource is provisioned automatically with this URL:
+``` http://127.0.0.1:3100```
 
-http://127.0.0.1:3100
 Grafana and Loki run on the same EC2 instance, so Grafana connects to Loki through localhost.
-
 Logs collected by Alloy
 
 # Alloy sends these logs to Loki:
