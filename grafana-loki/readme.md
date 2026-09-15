@@ -11,7 +11,7 @@ Terraform project for deploying an observability stack on a single **Amazon Linu
 
 This layout is intentionally simple and suitable for a lab, proof of concept, or small internal environment. For production workloads, consider a highly available architecture, private subnets, TLS, centralized access control, and managed observability services.
 
-## Architecture
+### Architecture
 
 ```mermaid
 flowchart LR
@@ -27,7 +27,7 @@ flowchart LR
 
 Grafana and Loki run on the same EC2 instance. Grafana connects to Loki over localhost, so Loki does not need to be exposed publicly.
 
-## Project structure
+### Project structure
 
 | File | Purpose |
 |---|---|
@@ -40,7 +40,7 @@ Grafana and Loki run on the same EC2 instance. Grafana connects to Loki over loc
 | `outputs.tf` | Displays IP addresses and service URLs |
 | `script.sh` | EC2 user-data installation and configuration script |
 
-## Prerequisites
+### Prerequisites
 
 Before deploying, make sure you have:
 
@@ -59,7 +59,7 @@ Verify your AWS identity before applying:
 aws sts get-caller-identity
 ```
 
-## Network access
+### Network access
 
 The EC2 security group allows the following ports:
 
@@ -71,7 +71,7 @@ The EC2 security group allows the following ports:
 
 Loki's HTTP port `3100` and gRPC port `9096` should remain closed to the public internet. They are used for local or private communication only.
 
-## Configuration
+### Configuration
 
 Review `variables.tf` and update `terraform.tfvars` for your environment before deploying. Typical values include the AWS region, instance type, AMI ID, key pair name, VPC ID, subnet ID, and allowed SSH/Grafana CIDR ranges.
 
@@ -90,7 +90,7 @@ crash.log
 
 Keep a non-sensitive `terraform.tfvars.example` file in the repository if you want to document the required inputs.
 
-## Deploy
+### Deploy
 
 Run these commands from the Terraform project directory:
 
@@ -104,7 +104,7 @@ terraform apply
 
 Review the plan and confirm the apply when Terraform prompts you.
 
-## View Terraform outputs
+### View Terraform outputs
 
 ```bash
 terraform output
@@ -117,7 +117,7 @@ Expected outputs include:
 - `Static_Web`
 - `StaticWeb_buildinfo`
 
-## Access the services
+### Access the services
 
 Replace `<EC2_PUBLIC_IP>` with the public IP returned by Terraform.
 
@@ -135,7 +135,7 @@ sudo cat /root/grafana-credentials.txt
 
 Protect this file and change the generated password after the first login.
 
-## Grafana and Loki
+### Grafana and Loki
 
 The Loki datasource is provisioned automatically with the following URL:
 
@@ -154,7 +154,7 @@ In Grafana, open **Explore**, select the Loki datasource, and try these queries:
 {job="user-data"}
 ```
 
-## Logs collected by Alloy
+### Logs collected by Alloy
 
 Alloy forwards the following sources to Loki:
 
@@ -164,7 +164,7 @@ Alloy forwards the following sources to Loki:
 - `/var/log/user-data.log`
 - systemd journal
 
-## Verify the deployment
+### Verify the deployment
 
 ### Check service status
 
@@ -203,7 +203,7 @@ curl http://127.0.0.1/
 curl http://127.0.0.1/build_info
 ```
 
-## Re-run user data
+### Re-run user data
 
 EC2 user data normally runs only during the instance's first boot. To recreate the instance using the latest `script.sh`, run:
 
@@ -213,7 +213,7 @@ terraform apply -replace='aws_instance.loki-vm'
 
 Review the plan carefully because replacing the instance may change its public IP and remove data stored locally on the instance.
 
-## Security recommendations
+### Security recommendations
 
 - Restrict SSH port `22` to your own public IP address rather than `0.0.0.0/0`.
 - Restrict Grafana port `3000` to trusted users or access it through a VPN or reverse proxy.
@@ -225,7 +225,7 @@ Review the plan carefully because replacing the instance may change its public I
 - Follow least privilege when defining the EC2 IAM policy for S3 access.
 - Enable appropriate S3 encryption, versioning, lifecycle rules, and access controls for production data.
 
-## Destroy the infrastructure
+### Destroy the infrastructure
 
 To remove Terraform-managed resources:
 
@@ -233,6 +233,3 @@ To remove Terraform-managed resources:
 terraform destroy
 ```
 Review the destroy plan carefully before confirming. Depending on the S3 configuration and retained objects, Loki data may require separate cleanup.
-
-
-Add your project license here, for example `MIT`, if this repository is intended for public reuse.
