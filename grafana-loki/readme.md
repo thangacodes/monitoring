@@ -1,5 +1,4 @@
-# Standalone EC2 Grafana, Loki, Alloy and Nginx
-
+## Standalone EC2 Grafana, Loki, Alloy and Nginx:
 Terraform project for deploying an observability stack on a single **Amazon Linux 2023 x86_64 EC2 instance**:
 
 - **Grafana** for dashboards and log exploration
