@@ -117,20 +117,25 @@ sudo tail -n 50 /var/log/user-data.log
 ```
 
 # Test Loki:
+```
 curl http://127.0.0.1:3100/ready
-
+```
 # Expected result:
 ready
 
-Test Nginx:
+# Test Nginx:
+```
 curl http://127.0.0.1/
 curl http://127.0.0.1/build_info
-
+``
 # Re-run user data:
+```
 User data normally runs only during the first EC2 boot. To recreate the instance with the latest script.sh:
 terraform apply -replace='aws_instance.loki-vm'
+```
 
 # Important security notes:
+```
 Do not expose Loki ports 3100 or 9096 publicly.
 Restrict SSH port 22 to your own IP address.
 Restrict Grafana port 3000 to trusted users or use a reverse proxy.
