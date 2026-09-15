@@ -78,43 +78,29 @@ The Grafana username and generated password are saved on the EC2 instance:
 sudo cat /root/grafana-credentials.txt
 
 Grafana and Loki
-
 The Loki datasource is provisioned automatically with this URL:
 
 http://127.0.0.1:3100
-
 Grafana and Loki run on the same EC2 instance, so Grafana connects to Loki through localhost.
 
 Logs collected by Alloy
 
-Alloy sends these logs to Loki:
-
+# Alloy sends these logs to Loki:
 Nginx access log
-
 Nginx error log
-
 /var/log/*.log
-
 /var/log/user-data.log
-
 systemd journal
 
 In Grafana, open Explore, select the Loki datasource, and use:
-
 {job="nginx"}
-
 {job="nginx", log_type="access"}
-
 {job="nginx", log_type="error"}
-
 {job="system"}
-
 {job="systemd-journal"}
-
 {job="user-data"}
-
-Check services on EC2
-
+```
+# Check services on EC2
 sudo systemctl status nginx --no-pager
 sudo systemctl status loki --no-pager
 sudo systemctl status alloy --no-pager
@@ -136,32 +122,21 @@ Test Nginx:
 curl http://127.0.0.1/
 curl http://127.0.0.1/build_info
 
-Re-run user data:
-
+# Re-run user data:
 User data normally runs only during the first EC2 boot. To recreate the instance with the latest script.sh:
-
 terraform apply -replace='aws_instance.loki-vm'
 
-Important security notes
-
+# Important security notes:
 Do not expose Loki ports 3100 or 9096 publicly.
-
 Restrict SSH port 22 to your own IP address.
-
 Restrict Grafana port 3000 to trusted users or use a reverse proxy.
-
 Use HTTPS and a domain name for production Grafana access.
-
 Protect /root/grafana-credentials.txt.
-
 Do not print passwords into /var/log/user-data.log.
-
 Use an Elastic IP if the public IP must remain stable.
 
-Destroy the infrastructure
-
+# Destroy the infrastructure:
 This removes the Terraform-managed resources:
-
 terraform destroy
-
-Review the plan carefully before confirmi
+Review the plan carefully before confirming.
+```
