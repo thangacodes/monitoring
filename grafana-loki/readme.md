@@ -1,13 +1,14 @@
 # Standalone EC2 Grafana, Loki and Nginx
 
 This Terraform project creates a standalone Amazon Linux 2023 EC2 server with:
-
+```
 Grafana dashboard
 Grafana Loki log storage
 Grafana Alloy log collector
 Loki logs stored in Amazon S3
 Nginx static website
 Systemd services for automatic startup
+```
 
 | File | Purpose |
 |---|---|
