@@ -1,4 +1,4 @@
-# Standalone EC2 Grafana, Loki, Alloy and Nginx
+### Standalone EC2 Grafana, Loki, Alloy and Nginx:
 
 Terraform project for deploying an observability stack on a single **Amazon Linux 2023 x86_64 EC2 instance**:
 
@@ -232,9 +232,7 @@ To remove Terraform-managed resources:
 ```bash
 terraform destroy
 ```
-
 Review the destroy plan carefully before confirming. Depending on the S3 configuration and retained objects, Loki data may require separate cleanup.
 
-## License
 
 Add your project license here, for example `MIT`, if this repository is intended for public reuse.
