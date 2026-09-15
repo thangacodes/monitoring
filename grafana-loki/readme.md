@@ -101,16 +101,20 @@ In Grafana, open Explore, select the Loki datasource, and use:
 {job="user-data"}
 ```
 # Check services on EC2
+```
 sudo systemctl status nginx --no-pager
 sudo systemctl status loki --no-pager
 sudo systemctl status alloy --no-pager
 sudo systemctl status grafana-server --no-pager
+```
 
 # Check logs:
+```
 sudo journalctl -u loki -n 50 --no-pager
 sudo journalctl -u alloy -n 50 --no-pager
 sudo journalctl -u grafana-server -n 50 --no-pager
 sudo tail -n 50 /var/log/user-data.log
+```
 
 # Test Loki:
 curl http://127.0.0.1:3100/ready
