@@ -1,4 +1,4 @@
-Standalone EC2 Grafana, Loki and Nginx
+# Standalone EC2 Grafana, Loki and Nginx
 
 This Terraform project creates a standalone Amazon Linux 2023 EC2 server with:
 
@@ -14,8 +14,8 @@ Nginx static website
 
 Systemd services for automatic startup
 
-Repository files
-
+Repository files:
+```
 File
 
 Purpose
@@ -51,7 +51,7 @@ Displays EC2 IP addresses and website URLs
 script.sh
 
 EC2 user-data installation script
-
+```
 Prerequisites
 
 Terraform installed
